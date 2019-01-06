@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {GoogleApiWrapper, Map} from 'google-maps-react';
+import { GoogleApiWrapper } from 'google-maps-react';
+import { Map } from './Map';
 
 export class Container extends Component {
     render() {
@@ -7,6 +8,8 @@ export class Container extends Component {
             width: '100vw',
             height: '100vh'
         };
+
+        console.log(this.props);
 
         return (
             <div style={style}>
