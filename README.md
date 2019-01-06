@@ -19,3 +19,5 @@ After creating the account, we can download Webstorm [here](https://www.jetbrain
 -[Creating a Google Maps React Component](https://www.fullstackreact.com/articles/how-to-write-a-google-maps-react-component/)
 
 -[google-maps-react](https://www.npmjs.com/package/google-maps-react)
+
+-[prop types package](https://www.npmjs.com/package/prop-types)
