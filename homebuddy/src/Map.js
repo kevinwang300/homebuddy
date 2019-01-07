@@ -7,11 +7,20 @@ export class Map extends Component {
         super(props);
 
         const {lat, lng} = this.props.initialCenter;
+
+        const directionsService = this.props && this.props.google ?
+            new this.props.google.maps.DirectionsService() : null;
+
+        const directionsDisplay = this.props && this.props.google ?
+            new this.props.google.maps.DirectionsRenderer() : null;
+
         this.state = {
             currentLocation: {
                 lat: lat,
                 lng: lng
-            }
+            },
+            directionsService: directionsService,
+            directionsDisplay: directionsDisplay
         }
     }
 
@@ -43,18 +52,19 @@ export class Map extends Component {
     }
 
     loadMap() {
-        console.log("loading map!");
         if (this.props && this.props.google) {
-            console.log("into loading");
             // google is available
             const {google} = this.props;
             const maps = google.maps;
 
+            // let directionsService = new maps.DirectionsService();
+            // let directionsDisplay = new maps.DirectionsRenderer();
+
+            let haight = new maps.LatLng(37.7699298, -122.4469157);
+            let oceanBeach = new maps.LatLng(37.7683909618184, -122.51089453697205);
+
             const mapRef = this.refs.map;
             const node = ReactDOM.findDOMNode(mapRef);
-
-            console.log(this.refs);
-            console.log(node);
 
             let {initialCenter, zoom} = this.props;
 
@@ -62,16 +72,27 @@ export class Map extends Component {
             // let {lat, lng} = initialCenter;
             const {lat, lng} = this.state.currentLocation;
 
-            console.log(lat, lng);
-
             const center = new maps.LatLng(lat, lng);
             const mapConfig = Object.assign({}, {
-                center: center,
+                // center: center,
+                center: haight,
                 zoom: zoom
             });
             this.map = new maps.Map(node, mapConfig);
+            this.state.directionsDisplay.setMap(this.map);
+            this.calcRoute();
 
-            console.log(this.map);
+
+            // var directionsService = new google.maps.DirectionsService();
+            // var directionsDisplay = new google.maps.DirectionsRenderer();
+            // var haight = new google.maps.LatLng(37.7699298, -122.4469157);
+            // var oceanBeach = new google.maps.LatLng(37.7683909618184, -122.51089453697205);
+            // var mapOptions = {
+            //     zoom: 14,
+            //     center: haight
+            // }
+            // var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+            // directionsDisplay.setMap(map);
         }
     }
 
@@ -88,15 +109,54 @@ export class Map extends Component {
         }
     }
 
+    calcRoute() {
+        const google = this.props.google;
+        const maps = google.maps;
+
+        let haight = new maps.LatLng(37.7699298, -122.4469157);
+        let oceanBeach = new maps.LatLng(37.7683909618184, -122.51089453697205);
+
+        // let selectedMode = document.getElementById('mode').value;
+        let request = {
+            origin: haight,
+            destination: oceanBeach,
+            // Note that Javascript allows us to access the constant
+            // using square brackets and a string value as its
+            // "property."
+            travelMode: maps.TravelMode['DRIVING']
+        };
+
+        console.log(this.state);
+
+        this.state.directionsService.route(request, (response, status) => {
+            console.log('response: ', response);
+            console.log('status: ', status);
+            if (status === 'OK') {
+                this.state.directionsDisplay.setDirections(response);
+            }
+        });
+    }
+
     render() {
-        const style = {
-            width: '100vw',
+        const mapStyle = {
+            width: '70vw',
+            height: '100vh',
+            float: 'right'
+        };
+
+        const directionsPanelStyle = {
+            width: '30vw',
             height: '100vh'
         };
 
         return (
-            <div ref='map' style={style}>
-                Loading map...
+            <div>
+                <div ref='map' style={mapStyle}>
+                    Loading map...
+                </div>
+                <div ref='directionsPanel' style={directionsPanelStyle}>
+                    Loading directions panel...
+                </div>
             </div>
         )
     }
@@ -116,5 +176,5 @@ Map.defaultProps = {
         lat: 37.774929,
         lng: -122.419416
     },
-    centerAroundCurrentLocation: true
+    centerAroundCurrentLocation: false
 };
