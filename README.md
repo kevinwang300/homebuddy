@@ -21,3 +21,5 @@ After creating the account, we can download Webstorm [here](https://www.jetbrain
 -[google-maps-react](https://www.npmjs.com/package/google-maps-react)
 
 -[prop types package](https://www.npmjs.com/package/prop-types)
+
+-[deploying react app to heroku](https://dev.to/smithmanny/deploy-your-react-app-to-heroku-2b6f)
