@@ -23,3 +23,5 @@ After creating the account, we can download Webstorm [here](https://www.jetbrain
 -[prop types package](https://www.npmjs.com/package/prop-types)
 
 -[deploying react app to heroku](https://dev.to/smithmanny/deploy-your-react-app-to-heroku-2b6f)
+
+-[download heroku cli](https://devcenter.heroku.com/articles/heroku-cli)
