@@ -31,8 +31,8 @@ export class Container extends Component {
         return (
             <div style={style}>
                 <Map google={this.props.google} />
-                <button type="button" onClick={this.buttonClicked}>Click Me!</button>
-                <div>what is going on</div>
+                {/*<button type="button" onClick={this.buttonClicked}>Click Me!</button>*/}
+                {/*<div>what is going on</div>*/}
             </div>
         )
     }
