@@ -32,6 +32,7 @@ export class Container extends Component {
             <div style={style}>
                 <Map google={this.props.google} />
                 <button type="button" onClick={this.buttonClicked}>Click Me!</button>
+                <div>what is going on</div>
             </div>
         )
     }
