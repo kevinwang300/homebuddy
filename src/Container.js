@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import { GoogleApiWrapper } from 'google-maps-react';
 import { Map } from './Map';
 
 export class Container extends Component {
+    componentDidMount() {
+        axios.get('/ping')
+            .then(res => {
+                console.log(res.data);
+            })
+    }
+
     render() {
         const style = {
             width: '100vw',
