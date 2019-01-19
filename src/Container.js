@@ -5,6 +5,7 @@ import { Map } from './Map';
 
 export class Container extends Component {
     componentDidMount() {
+        console.log('mounting!');
         axios.get('/ping')
             .then(res => {
                 console.log(res.data);
