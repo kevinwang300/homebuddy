@@ -164,7 +164,7 @@ export class Map extends Component {
                     Loading map...
                 </div>
                 <button ref='directionsPanel' style={directionsPanelStyle} onClick={this.buttonClicked}>
-                    Loading directions panel...
+                    Load directions panel...kevon
                 </button>
             </div>
         )
