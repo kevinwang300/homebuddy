@@ -9,9 +9,14 @@ app.use(favicon(__dirname + '/build/favicon.ico'));
 app.use(express.static(__dirname));
 app.use(express.static(path.join(__dirname, 'build')));
 app.get('/ping', function (req, res) {
+    console.log('ping?');
     return res.send('pong');
 });
+app.get('/test', function (req, res) {
+    return res.send({'test': 'test message here!'})
+});
 app.get('/', function (req, res) {
+    console.log('GET root');
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 app.listen(port);

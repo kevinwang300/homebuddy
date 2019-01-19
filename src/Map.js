@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 
 export class Map extends Component {
     constructor(props) {
@@ -137,6 +138,14 @@ export class Map extends Component {
         });
     }
 
+    buttonClicked() {
+        console.log('I have been clicked!');
+        axios.get('/test')
+            .then(res => {
+                console.log(res.data);
+            })
+    }
+
     render() {
         const mapStyle = {
             width: '70vw',
@@ -157,6 +166,7 @@ export class Map extends Component {
                 <div ref='directionsPanel' style={directionsPanelStyle}>
                     Loading directions panel...
                 </div>
+                <button type="button" onClick={this.buttonClicked}>Click Me!</button>
             </div>
         )
     }
