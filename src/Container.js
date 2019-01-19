@@ -12,6 +12,14 @@ export class Container extends Component {
             })
     }
 
+    buttonClicked() {
+        console.log('I have been clicked!');
+        axios.get('/test')
+            .then(res => {
+                console.log(res.data);
+            })
+    }
+
     render() {
         const style = {
             width: '100vw',
@@ -23,6 +31,7 @@ export class Container extends Component {
         return (
             <div style={style}>
                 <Map google={this.props.google} />
+                <button type="button" onClick={this.buttonClicked}>Click Me!</button>
             </div>
         )
     }

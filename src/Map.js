@@ -138,14 +138,6 @@ export class Map extends Component {
         });
     }
 
-    buttonClicked() {
-        console.log('I have been clicked!');
-        axios.get('/test')
-            .then(res => {
-                console.log(res.data);
-            })
-    }
-
     render() {
         const mapStyle = {
             width: '70vw',
@@ -159,14 +151,13 @@ export class Map extends Component {
         };
 
         return (
-            <div>
+            <div id={'map-container'}>
                 <div ref='map' style={mapStyle}>
                     Loading map...
                 </div>
                 <div ref='directionsPanel' style={directionsPanelStyle}>
                     Loading directions panel...
                 </div>
-                <button type="button" onClick={this.buttonClicked}>Click Me!</button>
             </div>
         )
     }
