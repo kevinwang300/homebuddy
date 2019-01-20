@@ -31,10 +31,17 @@ app.post('/post', function (req, res) {
         username: 'testname',
         email: 'test@test.com',
         profile_picture : 'google.com'
+    }, function (error) {
+        if (error) {
+            return res.send('post failed');
+        } else {
+            return res.send('post succeeded');
+        }
     });
+    // return res.send('post request');
 });
 app.get('/test', function (req, res) {
-    return res.send({'test': 'test message here!'})
+    return res.send({'test': 'test message here!'});
 });
 app.get('/', function (req, res) {
     console.log('GET root');
