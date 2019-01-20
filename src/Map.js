@@ -138,7 +138,7 @@ export class Map extends Component {
         });
     }
 
-    buttonClicked() {
+    loadButtonClicked() {
         console.log('I have been clicked!');
         axios.get('/test')
             .then(res => {
@@ -155,7 +155,7 @@ export class Map extends Component {
 
         const directionsPanelStyle = {
             width: '30vw',
-            height: '100vh'
+            height: '50vh'
         };
 
         return (
@@ -163,8 +163,11 @@ export class Map extends Component {
                 <div ref='map' style={mapStyle}>
                     Loading map...
                 </div>
-                <button ref='directionsPanel' style={directionsPanelStyle} onClick={this.buttonClicked}>
-                    Load directions panel...kevon
+                <button ref='directionsPanel' style={directionsPanelStyle} onClick={this.loadButtonClicked}>
+                    Store data here
+                </button>
+                <button ref='directionsPanel' style={directionsPanelStyle} onClick={this.loadButtonClicked}>
+                    Load data here
                 </button>
             </div>
         )
