@@ -27,13 +27,13 @@ app.get('/ping', function (req, res) {
     return res.send('pong');
 });
 app.post('/post', function (req, res) {
-    database.ref('users/testUser').set({
+    database.ref('testUser').set({
         username: 'testname',
         email: 'test@test.com',
         profile_picture : 'google.com'
     }, function (error) {
         if (error) {
-            return res.send('post failed');
+            return res.send('post failed! Error is:' + error);
         } else {
             return res.send('post succeeded');
         }
