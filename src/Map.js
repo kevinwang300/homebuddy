@@ -138,8 +138,16 @@ export class Map extends Component {
         });
     }
 
+    postButtonClicked() {
+        console.log('Post clicked!');
+        axios.post('post')
+            .then(res => {
+                console.log(res.data);
+            })
+    }
+
     loadButtonClicked() {
-        console.log('I have been clicked!');
+        console.log('Load clicked!');
         axios.get('/test')
             .then(res => {
                 console.log(res.data);
@@ -163,7 +171,7 @@ export class Map extends Component {
                 <div ref='map' style={mapStyle}>
                     Loading map...
                 </div>
-                <button ref='directionsPanel' style={directionsPanelStyle} onClick={this.loadButtonClicked}>
+                <button ref='directionsPanel' style={directionsPanelStyle} onClick={this.postButtonClicked}>
                     Store data here
                 </button>
                 <button ref='directionsPanel' style={directionsPanelStyle} onClick={this.loadButtonClicked}>
